@@ -33,14 +33,11 @@ function showQuestion() {
 
 function checkAnswer(selected, answer) {
 
-    const result =
-        selected === answer
-        ? "〇 正解！"
-        : "× 不正解";
-
-    document.getElementById("result").innerText =
-        result;
+    if (selected === answer) {
+        alert("正解！");
+    } else {
+        alert("不正解...");
+    }
 
     showQuestion();
 }
-
