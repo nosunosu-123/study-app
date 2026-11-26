@@ -1,16 +1,41 @@
-function showQuestion() {
-    document.getElementById("question").innerText =
-        "CPUの役割は？";
+let questions = [];
 
-    document.getElementById("choices").innerHTML =
-        `
-        <button>① 記憶装置</button><br><br>
-        <button onclick="correct()">② 演算処理</button><br><br>
-        <button>③ 通信装置</button><br><br>
-        <button>④ 出力装置</button>
+fetch("questions.json")
+  .then(response => response.json())
+  .then(data => {
+    questions = data;
+  });
+
+function showQuestion() {
+
+    const randomIndex =
+        Math.floor(Math.random() * questions.length);
+
+    const q = questions[randomIndex];
+
+    document.getElementById("question").innerText =
+        q.question;
+
+    let html = "";
+
+    q.choices.forEach((choice, index) => {
+
+        html += `
+            <button onclick="checkAnswer(${index}, ${q.answer})">
+                ${choice}
+            </button>
+            <br><br>
         `;
+    });
+
+    document.getElementById("choices").innerHTML = html;
 }
 
-function correct() {
-    alert("正解！");
+function checkAnswer(selected, answer) {
+
+    if (selected === answer) {
+        alert("正解！");
+    } else {
+        alert("不正解...");
+    }
 }
