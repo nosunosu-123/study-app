@@ -38,4 +38,9 @@ function checkAnswer(selected, answer) {
     } else {
         alert("不正解...");
     }
+
+    showQuestion();
+}
+        alert("不正解...");
+    }
 }
