@@ -41,6 +41,7 @@ function checkAnswer(selected, answer) {
 
     showQuestion();
 }
+}
         alert("不正解...");
     }
 }
